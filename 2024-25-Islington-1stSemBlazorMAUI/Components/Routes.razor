@@ -3,4 +3,9 @@
         <RouteView RouteData="@routeData" DefaultLayout="@typeof(Layout.MainLayout)" />
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
+    <NotFound>
+        <!-- Show a message or redirect for unmatched routes -->
+        <h3>Sorry, the page you requested was not found.</h3>
+        <a href="/login">Go to Login</a>
+    </NotFound>
 </Router>

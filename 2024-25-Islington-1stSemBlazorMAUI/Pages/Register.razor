@@ -1,0 +1,42 @@
+﻿@page "/register"
+@using _2024_25_Islington_1stSemBlazorMAUI.Model
+@using _2024_25_Islington_1stSemBlazorMAUI.Services.Interface
+@inject IUserService UserService
+
+<h3>Register</h3>
+<div>
+    <input @bind="Username" placeholder="Username" />
+    <input @bind="Password" placeholder="Password" type="password" />
+    <select @bind="Role">
+        <option value="Admin">Admin</option>
+        <option value="User">User</option>
+    </select>
+    <button @onclick="HandleRegister">Register</button>
+</div>
+@if (Message != null)
+{
+    <p>@Message</p>
+}
+
+@code {
+    private string Username = "";
+    private string Password = "";
+    private string Role = "User";
+    private string? Message;
+
+    private void HandleRegister()
+    {
+        try
+        {
+            UserBase user = Role == "Admin" ? new AdminUser() : new RegularUser();
+            user.Username = Username;
+            user.Password = Password;
+            UserService.RegisterUser(user);
+            Message = "User registered successfully!";
+        }
+        catch (Exception ex)
+        {
+            Message = ex.Message;
+        }
+    }
+}

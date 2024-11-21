@@ -1,0 +1,38 @@
+﻿@page "/login"
+@using _2024_25_Islington_1stSemBlazorMAUI.Services
+@using _2024_25_Islington_1stSemBlazorMAUI.Services.Interface
+@inject IUserService UserService
+@inject NavigationManager Navigation
+
+<h3>Login</h3>
+
+<div class="login-body">
+    <div class="form-login">
+        <form class="text-center" @onsubmit="HandleLogin">
+            <img class="mb-4" src="/appicon.png" alt="" height="72">
+            <h1 class="h3 mb-3 fw-normal">Please Login</h1>
+
+            <div class="form-floating">
+                <input type="text" class="form-control username" @bind="Username" placeholder="Username" />
+                <label for="floatingInput">Username</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control password" @bind="Password" placeholder="Password" />
+                <label for="floatingPassword">Password</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">
+                <span class="oi oi-account-login"></span> Login
+            </button>
+        </form>
+    </div>
+</div>
+@if (!string.IsNullOrEmpty(ErrorMessage))
+{
+    <p style="color:red;">@ErrorMessage</p>
+}
+
+@if (!string.IsNullOrEmpty(InfoMessage))
+{
+    <p style="color:blue;">@InfoMessage</p>
+}
+
