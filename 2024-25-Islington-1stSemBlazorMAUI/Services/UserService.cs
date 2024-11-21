@@ -1,74 +1,51 @@
 ﻿using _2024_25_Islington_1stSemBlazorMAUI.Model;
 using _2024_25_Islington_1stSemBlazorMAUI.Services.Interface;
-using System.Text.Json;
 
 namespace _2024_25_Islington_1stSemBlazorMAUI.Services;
 
-public class UserService : IUserService
+public class UserService : UserBase, IUserService
 {
-    private static readonly string FilePath = Path.Combine(
-         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-         "users.json");
-
-    private List<UserBase> users = new();
-
+    private List<User> _users;
     public UserService()
     {
-        //LoadUsers();
+        _users = LoadUsers();
 
-        if (!users.Any())
+        // Add default admin user if the file is empty
+        if (!_users.Any())
         {
-            users.Add(new AdminUser
-            {
-                Username = "admin",
-                Password = "password",
-            });
-
-            SaveUsers();
+            _users.Add(new User { Username = "admin", Password = "password" });
+            SaveUsers(_users);
         }
     }
 
-    public void DeleteUser(string username)
+    public bool DeleteUser(string username)
     {
-        var user = users.FirstOrDefault(u => u.Username == username);
-        if (user != null)
-        {
-            users.Remove(user);
-            SaveUsers();
-        }
+        var user = _users.FirstOrDefault(u => u.Username == username);
+        if (user == null)
+            return false;
+
+        _users.Remove(user);
+        SaveUsers(_users);
+        return true;
     }
 
-    public List<UserBase> GetAllUsers()
+    public List<User> GetAllUsers()
     {
-       return users; 
+        return _users;
     }
 
-    public UserBase? Login(string username, string password)
+    public bool Login(string username, string password)
     {
-        return users.FirstOrDefault(u => u.Username == username && u.Password == password);
+        return _users.Any(u => u.Username == username && u.Password == password);
     }
 
-    public void RegisterUser(UserBase user)
+    public bool Register(string username, string password)
     {
-        if (users.Any(u => u.Username == user.Username))
-            throw new Exception("User already exists!");
+        if (_users.Any(u => u.Username == username))
+            return false; // User already exists
 
-        users.Add(user);
-        SaveUsers();
-    }
-
-    private void LoadUsers()
-    {
-        if (File.Exists(FilePath))
-        {
-            var json = File.ReadAllText(FilePath);
-            users = JsonSerializer.Deserialize<List<UserBase>>(json) ?? new List<UserBase>();
-        }
-    }
-
-    private void SaveUsers()
-    {
-        var json = JsonSerializer.Serialize(users);
-        File.WriteAllText(FilePath, json);
+        _users.Add(new User { Username = username, Password = password });
+        SaveUsers(_users);
+        return true;
     }
 }

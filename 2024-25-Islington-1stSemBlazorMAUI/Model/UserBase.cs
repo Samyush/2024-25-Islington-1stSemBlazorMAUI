@@ -1,7 +1,19 @@
-﻿namespace _2024_25_Islington_1stSemBlazorMAUI.Model;
+﻿using System.Text.Json;
+
+namespace _2024_25_Islington_1stSemBlazorMAUI.Model;
 public abstract class UserBase
 {
-    public string Username { get; set; } = string.Empty;
+   protected static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "users.json");
+    protected List<User> LoadUsers()
+    {
+        if (!File.Exists(FilePath)) return new List<User>();
+        var json = File.ReadAllText(FilePath);
+        return JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
+    }
 
-    public string Password { get; set; } = string.Empty;
+    protected void SaveUsers(List<User> users)
+    {
+        var json = JsonSerializer.Serialize(users);
+        File.WriteAllText(FilePath, json);
+    }
 }

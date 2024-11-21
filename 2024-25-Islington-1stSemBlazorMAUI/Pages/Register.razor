@@ -1,42 +1,24 @@
 ﻿@page "/register"
-@using _2024_25_Islington_1stSemBlazorMAUI.Model
 @using _2024_25_Islington_1stSemBlazorMAUI.Services.Interface
 @inject IUserService UserService
 
-<h3>Register</h3>
-<div>
-    <input @bind="Username" placeholder="Username" />
-    <input @bind="Password" placeholder="Password" type="password" />
-    <select @bind="Role">
-        <option value="Admin">Admin</option>
-        <option value="User">User</option>
-    </select>
-    <button @onclick="HandleRegister">Register</button>
-</div>
-@if (Message != null)
-{
-    <p>@Message</p>
-}
+<div class="register-body">
+    <h1 class="h3 mb-3 fw-normal text-center">Register New User</h1>
 
-@code {
-    private string Username = "";
-    private string Password = "";
-    private string Role = "User";
-    private string? Message;
+    <div class="form-floating">
+        <input type="text" class="form-control" @bind="Username" placeholder="Username" />
+        <label>Username</label>
+    </div>
+    <div class="form-floating mt-3">
+        <input type="password" class="form-control" @bind="Password" placeholder="Password" />
+        <label>Password</label>
+    </div>
+    <button class="btn btn-lg btn-primary mt-3" onclick="@RegisterUser">Register</button>
 
-    private void HandleRegister()
+    @if (!string.IsNullOrEmpty(Message))
     {
-        try
-        {
-            UserBase user = Role == "Admin" ? new AdminUser() : new RegularUser();
-            user.Username = Username;
-            user.Password = Password;
-            UserService.RegisterUser(user);
-            Message = "User registered successfully!";
-        }
-        catch (Exception ex)
-        {
-            Message = ex.Message;
-        }
+        <div class="text-info mt-3">@Message</div>
     }
-}
+</div>
+
+

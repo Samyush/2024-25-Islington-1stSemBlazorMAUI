@@ -1,14 +1,15 @@
 ﻿using _2024_25_Islington_1stSemBlazorMAUI.Model;
 
 namespace _2024_25_Islington_1stSemBlazorMAUI.Services.Interface;
+
 public interface IUserService
 {
-    void RegisterUser(UserBase user);
+    bool Login(string username, string password);
 
-    UserBase? Login(string username, string password);
+    bool Register(string username, string password);
 
-    void DeleteUser(string username);
+    bool DeleteUser(string username);
 
-    List<UserBase> GetAllUsers();
+    List<User> GetAllUsers();
 }
 
