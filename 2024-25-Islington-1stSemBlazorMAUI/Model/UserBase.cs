@@ -3,7 +3,9 @@
 namespace _2024_25_Islington_1stSemBlazorMAUI.Model;
 public abstract class UserBase
 {
-   protected static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "users.json");
+
+    protected static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "users.json");
+
     protected List<User> LoadUsers()
     {
         if (!File.Exists(FilePath)) return new List<User>();

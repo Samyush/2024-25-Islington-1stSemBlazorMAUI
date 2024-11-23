@@ -6,6 +6,9 @@ namespace _2024_25_Islington_1stSemBlazorMAUI.Services;
 public class UserService : UserBase, IUserService
 {
     private List<User> _users;
+
+    public const string SeedUsername = "admin";
+    public const string SeedPassword = "password";
     public UserService()
     {
         _users = LoadUsers();
@@ -13,7 +16,7 @@ public class UserService : UserBase, IUserService
         // Add default admin user if the file is empty
         if (!_users.Any())
         {
-            _users.Add(new User { Username = "admin", Password = "password" });
+            _users.Add(new User { Username = SeedUsername, Password = SeedPassword });
             SaveUsers(_users);
         }
     }
@@ -34,17 +37,21 @@ public class UserService : UserBase, IUserService
         return _users;
     }
 
-    public bool Login(string username, string password)
+    public bool Login(User user)
     {
-        return _users.Any(u => u.Username == username && u.Password == password);
+        if (string.IsNullOrEmpty(user.Username) || string.IsNullOrEmpty(user.Password))
+        {
+            return false;
+        }
+        return _users.Any(u => u.Username == user.Username && u.Password == u.Password);
     }
 
-    public bool Register(string username, string password)
+    public bool Register(User user)
     {
-        if (_users.Any(u => u.Username == username))
+        if (_users.Any(u => u.Username == user.Username))
             return false; // User already exists
 
-        _users.Add(new User { Username = username, Password = password });
+        _users.Add(new User { Username = user.Username, Password = user.Password });
         SaveUsers(_users);
         return true;
     }

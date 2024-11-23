@@ -1,0 +1,16 @@
+﻿@page "/"
+@using _2024_25_Islington_1stSemBlazorMAUI.Model
+@inject NavigationManager NavManager
+@code {
+
+    [CascadingParameter]
+    private GlobalState _globalState { get; set; }
+
+    protected override void OnInitialized()
+    {
+        if (_globalState.CurrentUser == null)
+        {
+            NavManager.NavigateTo("/login");
+        } 
+    }
+}

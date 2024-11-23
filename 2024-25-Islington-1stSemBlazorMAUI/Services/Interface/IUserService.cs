@@ -4,9 +4,9 @@ namespace _2024_25_Islington_1stSemBlazorMAUI.Services.Interface;
 
 public interface IUserService
 {
-    bool Login(string username, string password);
+    bool Login(User user);
 
-    bool Register(string username, string password);
+    bool Register(User user);
 
     bool DeleteUser(string username);
 

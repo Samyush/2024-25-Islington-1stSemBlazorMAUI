@@ -1,17 +1,18 @@
+using _2024_25_Islington_1stSemBlazorMAUI.Model;
+
 namespace _2024_25_Islington_1stSemBlazorMAUI.Pages;
 
-public partial class Login
+public partial class Login 
 {
-    private string Username = "";
-    private string Password = "";
     private string? ErrorMessage;
 
-    private void HandleLogin()
+    public User Users { get; set; } = new();
+
+    private async void HandleLogin()
     {
-        if (UserService.Login(Username, Password))
+        if (UserService.Login(Users))
         {
-            ErrorMessage = null;
-            Navigation.NavigateTo("/home");
+            Nav.NavigateTo("/home");
         }
         else
         {
@@ -19,8 +20,8 @@ public partial class Login
         }
     }
 
-    private void HandleRegister()
+    private async void HandleRegister()
     {
-        Navigation.NavigateTo("/register");
+        Nav.NavigateTo("/register");
     }
 }

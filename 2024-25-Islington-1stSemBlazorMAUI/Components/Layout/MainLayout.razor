@@ -1,29 +1,36 @@
-﻿@inherits LayoutComponentBase
+﻿@using _2024_25_Islington_1stSemBlazorMAUI.Model
+@inherits LayoutComponentBase
 @inject NavigationManager Navigation
 
 <div class="page">
-    @* <div class="sidebar">
-        <NavMenu />
-    </div> *@
-    <main>
-        <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+    @if(_globalState.CurrentUser != null)
+    {
+        <div class="sidebar">
+            <NavMenu Username="@_globalState.CurrentUser.Username" UserRole="@_globalState.CurrentUser.Role" LogoutHandler="LogoutHandler" />
         </div>
-
+    }
+    <main>
         <article class="content px-4">
-            @Body
+            <CascadingValue Value="@_globalState">
+                @Body
+            </CascadingValue>
         </article>
     </main>
 </div>
 
 @code {
-    protected override void OnInitialized()
+    private GlobalState _globalState = new();
+
+    private void LogoutHandler()
     {
-        loginHandler();
+        if(_globalState.CurrentUser == null)
+        {
+            Navigation.NavigateTo("/login");
+        }
     }
 
-    private void loginHandler()
+    private void GoToRegisterPage()
     {
-        Navigation.NavigateTo("/login");
+        Navigation.NavigateTo("/register");
     }
 }
