@@ -1,6 +1,6 @@
 using _2024_25_Islington_1stSemBlazorMAUI.Model;
 
-namespace _2024_25_Islington_1stSemBlazorMAUI.Pages;
+namespace _2024_25_Islington_1stSemBlazorMAUI.Components.Pages;
 
 public partial class Login 
 {
