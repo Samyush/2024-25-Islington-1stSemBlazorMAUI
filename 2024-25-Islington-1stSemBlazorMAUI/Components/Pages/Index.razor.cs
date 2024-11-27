@@ -11,8 +11,8 @@ namespace _2024_25_Islington_1stSemBlazorMAUI.Components.Pages
 
         protected override void OnInitialized()
         {
-            
-            NavManager.NavigateTo("/login");
+
+            Nav.NavigateTo("/login");
          
         }
     }

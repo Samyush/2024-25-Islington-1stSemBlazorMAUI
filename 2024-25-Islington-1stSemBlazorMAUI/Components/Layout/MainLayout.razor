@@ -18,19 +18,4 @@
     </main>
 </div>
 
-@code {
-    private GlobalState _globalState = new();
 
-    private void LogoutHandler()
-    {
-        if(_globalState.CurrentUser == null)
-        {
-            Navigation.NavigateTo("/login");
-        }
-    }
-
-    private void GoToRegisterPage()
-    {
-        Navigation.NavigateTo("/register");
-    }
-}
