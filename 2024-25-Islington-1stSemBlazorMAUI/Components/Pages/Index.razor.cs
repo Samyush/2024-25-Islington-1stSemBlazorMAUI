@@ -1,4 +1,4 @@
-using _2024_25_Islington_1stSemBlazorMAUI.Model;
+using DataModel.Model;
 using Microsoft.AspNetCore.Components;
 
 namespace _2024_25_Islington_1stSemBlazorMAUI.Components.Pages
@@ -12,7 +12,7 @@ namespace _2024_25_Islington_1stSemBlazorMAUI.Components.Pages
         protected override void OnInitialized()
         {
             
-            NavManager.NavigateTo("/login");
+            Nav.NavigateTo("/login");
          
         }
     }

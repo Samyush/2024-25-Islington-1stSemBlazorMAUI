@@ -1,8 +1,4 @@
 ﻿@page "/register"
-@using _2024_25_Islington_1stSemBlazorMAUI.Services.Interface
-@inject IUserService UserService
-@inject NavigationManager Nav
-
 
 <div class="register-body">
     <h1 class="h3 mb-3 fw-normal text-center">Register New User</h1>
@@ -15,7 +11,7 @@
         <input type="password" class="form-control" @bind="Users.Password" placeholder="Password" />
         <label>Password</label>
     </div>
-    <button class="btn btn-lg btn-primary" onclick="@RegisterUser">Register</button>
+    <button class="btn btn-lg btn-primary" @onclick="RegisterUser">Register</button>
 
     @if (!string.IsNullOrEmpty(Message))
     {

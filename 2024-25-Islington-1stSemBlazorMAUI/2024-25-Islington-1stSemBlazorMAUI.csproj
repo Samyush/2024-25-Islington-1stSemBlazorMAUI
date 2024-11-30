@@ -65,4 +65,9 @@
         <PackageReference Include="MudBlazor" Version="7.15.0" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\DataAccess\DataAccess.csproj" />
+      <ProjectReference Include="..\DataModel\DataModel.csproj" />
+    </ItemGroup>
+
 </Project>

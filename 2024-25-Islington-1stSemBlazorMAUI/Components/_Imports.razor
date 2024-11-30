@@ -7,4 +7,11 @@
 @using Microsoft.JSInterop
 @using _2024_25_Islington_1stSemBlazorMAUI
 @using _2024_25_Islington_1stSemBlazorMAUI.Components
-@using _2024_25_Islington_1stSemBlazorMAUI.Services
+@using DataModel.Model
+@using DataAccess.Services.Interface
+
+@* Import Services *@
+@inject IUserService UserService
+
+@* Import Navigation Manager*@
+@inject NavigationManager Nav

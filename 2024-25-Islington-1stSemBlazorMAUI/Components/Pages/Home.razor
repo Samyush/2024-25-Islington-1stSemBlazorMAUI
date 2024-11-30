@@ -1,10 +1,13 @@
 ﻿@page "/home"
-@using _2024_25_Islington_1stSemBlazorMAUI.Services.Interface
-@inject NavigationManager Nav
-@inject IUserService UserService
+
+@using DataAccess.Services.Interface
 
 Welcome to your  Maui Blazor App.
 
+<div style="margin-bottom: 20px;">
+    <input type="text" @bind="Search" class="search-input text-dark" placeholder="Enter Name" style="margin-right: 10px;" />
+    <button class="btn btn-primary" @onclick="FilteredUsers">Filter</button>
+</div>
 <button class="btn btn-lg btn-secondary" @onclick="ShowLogoutConfirmation" style="position: fixed; top: 20px; right: 20px;">
     Logout
 </button>
@@ -12,7 +15,7 @@ Welcome to your  Maui Blazor App.
 <h2>Users List</h2>
 
 <!-- Users List Table -->
-@if (users.Any())
+@if (Filtered.Any())
 {
     <table class="table">
         <thead>
@@ -22,9 +25,10 @@ Welcome to your  Maui Blazor App.
             </tr>
         </thead>
         <tbody>
-            @foreach (var user in users)
+            @foreach (var user in Filtered)
             {
                 <tr>
+                    <td>@(Filtered.IndexOf(user) + 1)</td>
                     <td>@user.Username</td>
                     <td>
                         <button class="btn btn-danger" @onclick="() => DeleteUser(user.Username)">Delete</button>

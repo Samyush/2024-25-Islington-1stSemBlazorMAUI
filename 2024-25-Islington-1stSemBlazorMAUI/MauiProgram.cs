@@ -1,5 +1,5 @@
-﻿using _2024_25_Islington_1stSemBlazorMAUI.Services;
-using _2024_25_Islington_1stSemBlazorMAUI.Services.Interface;
+﻿using DataAccess.Services;
+using DataAccess.Services.Interface;
 using Microsoft.Extensions.Logging;
 
 namespace _2024_25_Islington_1stSemBlazorMAUI

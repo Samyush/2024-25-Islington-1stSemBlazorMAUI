@@ -1,4 +1,5 @@
-﻿namespace _2024_25_Islington_1stSemBlazorMAUI.Model;
+﻿namespace DataModel.Model;
+
 public class User
 {
     public string Username { get; set; }
@@ -7,4 +8,3 @@ public class User
 
     public Role Role { get; set; }
 }
-

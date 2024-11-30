@@ -1,4 +1,5 @@
-using _2024_25_Islington_1stSemBlazorMAUI.Model;
+
+using DataModel.Model;
 
 namespace _2024_25_Islington_1stSemBlazorMAUI.Components.Pages;
 
@@ -8,9 +9,10 @@ public partial class Login
 
     public User Users { get; set; } = new();
 
+    #region Login
     private async void HandleLogin()
     {
-        if (UserService.Login(Users))
+        if (await UserService.Login(Users))
         {
             Nav.NavigateTo("/home");
         }
@@ -19,9 +21,12 @@ public partial class Login
             ErrorMessage = "Invalid username or password.";
         }
     }
+    #endregion
 
+    #region Register
     private async void HandleRegister()
     {
         Nav.NavigateTo("/register");
     }
+    #endregion
 }

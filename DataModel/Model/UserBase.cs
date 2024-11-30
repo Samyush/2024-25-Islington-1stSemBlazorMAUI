@@ -1,11 +1,13 @@
-﻿using System.Text.Json;
-
-namespace _2024_25_Islington_1stSemBlazorMAUI.Model;
+﻿using DataModel.Model;
+using System.Text.Json;
 public abstract class UserBase
 {
+    // This file will be stored in the app's local application data directory.
+    // The file name is "users.json".
 
     protected static readonly string FilePath = Path.Combine(FileSystem.AppDataDirectory, "users.json");
 
+    /// A list of users. If the file does not exist or is empty, returns an empty list.
     protected List<User> LoadUsers()
     {
         if (!File.Exists(FilePath)) return new List<User>();
@@ -13,6 +15,7 @@ public abstract class UserBase
         return JsonSerializer.Deserialize<List<User>>(json) ?? new List<User>();
     }
 
+    /// Saves the list of users to a JSON file.
     protected void SaveUsers(List<User> users)
     {
         var json = JsonSerializer.Serialize(users);
