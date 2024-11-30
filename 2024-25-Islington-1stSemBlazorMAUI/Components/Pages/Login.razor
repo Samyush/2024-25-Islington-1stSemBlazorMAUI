@@ -1,0 +1,30 @@
+﻿@page "/login"
+
+<div class="form-login">
+    <form class="text-center" @onsubmit="HandleLogin">
+        <img class="mb-4" src="/appicon.png" alt="" height="72">
+        <h1 class="h3 mb-3 fw-normal">Please Login</h1>
+
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" @bind="Users.Username" placeholder="Username" />
+            <label for="floatingInput">Username</label>
+        </div>
+
+        <!-- Password Input -->
+        <div class="form-floating mb-3">
+            <input type="password" class="form-control" @bind="Users.Password" placeholder="Password" />
+            <label for="floatingPassword">Password</label>
+        </div>
+
+        @if (!string.IsNullOrEmpty(ErrorMessage))
+        {
+            <div class="alert alert-danger">@ErrorMessage</div>
+        }
+        <button class="btn btn-lg btn-primary">
+            Login
+        </button>
+        <button class="btn btn-lg btn-secondary" @onclick="HandleRegister">
+            Register
+        </button>
+    </form>
+</div>

@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using DataAccess.Services;
+using DataAccess.Services.Interface;
+using Microsoft.Extensions.Logging;
 
 namespace _2024_25_Islington_1stSemBlazorMAUI
 {
@@ -15,6 +17,9 @@ namespace _2024_25_Islington_1stSemBlazorMAUI
                 });
 
             builder.Services.AddMauiBlazorWebView();
+
+            //Register services 
+            builder.Services.AddScoped<IUserService, UserService>();
 
 #if DEBUG
     		builder.Services.AddBlazorWebViewDeveloperTools();
