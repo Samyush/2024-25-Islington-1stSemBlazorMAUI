@@ -1,11 +1,19 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using _2024_25_Islington_1stSemBlazorMAUI.Services;
+using _2024_25_Islington_1stSemBlazorMAUI.Services.Interface;
+using Microsoft.Extensions.Logging;
+
 
 namespace _2024_25_Islington_1stSemBlazorMAUI
 {
     public static class MauiProgram
     {
+
+
         public static MauiApp CreateMauiApp()
         {
+            //Class2.printer();
+            ClassLibrary1.Class2.printer();
+
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
@@ -15,6 +23,9 @@ namespace _2024_25_Islington_1stSemBlazorMAUI
                 });
 
             builder.Services.AddMauiBlazorWebView();
+
+            //Register services 
+            builder.Services.AddScoped<IUserService, UserService>();
 
 #if DEBUG
     		builder.Services.AddBlazorWebViewDeveloperTools();
