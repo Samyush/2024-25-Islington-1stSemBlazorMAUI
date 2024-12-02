@@ -5,6 +5,10 @@ VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "2024-25-Islington-1stSemBlazorMAUI", "2024-25-Islington-1stSemBlazorMAUI\2024-25-Islington-1stSemBlazorMAUI.csproj", "{669E279A-A371-47C1-BAC1-3C6A30C83BCA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp", "ConsoleApp\ConsoleApp.csproj", "{594FD508-A9D8-4FF9-97AA-965419DCBB67}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{0455374C-98E1-4E47-B173-97AB1CB7321C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,6 +21,14 @@ Global
 		{669E279A-A371-47C1-BAC1-3C6A30C83BCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{669E279A-A371-47C1-BAC1-3C6A30C83BCA}.Release|Any CPU.Build.0 = Release|Any CPU
 		{669E279A-A371-47C1-BAC1-3C6A30C83BCA}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{594FD508-A9D8-4FF9-97AA-965419DCBB67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{594FD508-A9D8-4FF9-97AA-965419DCBB67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{594FD508-A9D8-4FF9-97AA-965419DCBB67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{594FD508-A9D8-4FF9-97AA-965419DCBB67}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0455374C-98E1-4E47-B173-97AB1CB7321C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0455374C-98E1-4E47-B173-97AB1CB7321C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0455374C-98E1-4E47-B173-97AB1CB7321C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0455374C-98E1-4E47-B173-97AB1CB7321C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
