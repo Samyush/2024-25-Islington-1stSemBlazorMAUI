@@ -2,12 +2,18 @@
 using _2024_25_Islington_1stSemBlazorMAUI.Services.Interface;
 using Microsoft.Extensions.Logging;
 
+
 namespace _2024_25_Islington_1stSemBlazorMAUI
 {
     public static class MauiProgram
     {
+
+
         public static MauiApp CreateMauiApp()
         {
+            //Class2.printer();
+            ClassLibrary1.Class2.printer();
+
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
